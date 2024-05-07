@@ -1,0 +1,8 @@
+<p>posts works!</p>
+<ul>
+    @for(msg of photos; track msg.id){
+        @if (msg.id < 6) {
+            <li><strong>{{msg.title}}</strong>: <img [src]="msg.thumbnailUrl"/></li>
+        }
+    }
+</ul>

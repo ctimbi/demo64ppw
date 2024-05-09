@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "demo64pw": {
+      "hosting": {
+        "demo64": [
+          "demo64pw"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "demo64pw"
+  }
+}

@@ -9,19 +9,31 @@ import { PostService } from '../../services/post.service';
   styleUrl: './posts.component.scss'
 })
 export class PostsComponent {
-
-  post: any
+  post?: any
+  comments: any
+  posts: any
   photos: any
 
   constructor(private postService: PostService){}
 
   ngOnInit(){
     this.postService.getAllPost().subscribe(data => {
-      this.post = data
+      this.posts = data
     })
 
-    this.postService.getAllPhotos().subscribe(data => {
-      this.photos = data
+  }
+
+  detailPost(id: number){
+    this.postService.getPost(id).subscribe(data => {
+      this.post = data
     })
+    this.postService.getPostComments(id).subscribe(data => {
+      this.comments = data
+    })
+  }
+
+  add(){
+    console.log('clci')
+    this.postService.addMensaje('hola')
   }
 }

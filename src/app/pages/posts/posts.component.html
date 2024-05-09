@@ -1,8 +1,30 @@
-<p>posts works!</p>
-<ul>
-    @for(msg of photos; track msg.id){
-        @if (msg.id < 6) {
-            <li><strong>{{msg.title}}</strong>: <img [src]="msg.thumbnailUrl"/></li>
+<div>
+    <p>posts works!</p>
+    <ul>
+        @for(msg of posts; track msg.id){
+            @if (msg.id < 6) {
+                <li (click)="detailPost(msg.id)"><strong>{{msg.title}}</strong></li>
+            }
         }
+    </ul>
+</div>
+
+<div>
+    @if (post) {
+        <h2>Detalle</h2>
+        <span class="label">ID</span><span>{{post.id}}</span><br/>
+        <span class="label">Title</span><span>{{post.title}}</span><br/>
+        
+        <span class="label">Body</span><span>{{post.body}}</span><br/>
+        <ul>
+            @for (item of comments; track comments.id) {
+                <li>
+                    <span class="label">{{item.email}}</span>: 
+                    <span>{{item.body}}</span>
+                </li>
+            }
+        </ul>
     }
-</ul>
+    
+</div>
+<button (click)="add()">add</button>
